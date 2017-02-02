@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% load i18n staticfiles podcast_tags %}
+
+
+{% block title %}{{ show.title }} &#183; {{ block.super }}{% endblock %}
+
+
+{% block content %}
+<div class="row color-white">
+<div class="col-md-12" >
+{% if not podcast_singular %}
+    <ul>
+        <li><a href="{% url 'podcast:show_list' %}">{% trans 'Podcasts' %}</a></li>
+    </ul>
+{% endif %}
+
+<h1>{{ show.title }}</h1>
+
+{% blocktrans count episode_count=page_obj.paginator.count %}
+<p>{{ episode_count }} episode</p>
+{% plural %}
+<p>{{ episode_count }} episodes</p>
+{% endblocktrans %}
+
+{% if episode_list %}
+
+    <h2>{% trans 'Episodes' %}</h2>
+    {% for episode in episode_list %}
+        <h3><a href="{{ episode.get_absolute_url }}">{{ episode.title }}</a></h3>
+        <p>{% trans 'Episode'%} {{ episode.index }}</p>
+        <p><time datetime="{{ episode.pub_date|date:'c' }}" title="{{ episode.pub_date|date:'c' }}">{{ episode.pub_date|date:'j F Y' }}</time></p>
+        {% if episode.description %}
+        <p>{{ episode.description|safe }}</p>
+        {% endif %}
+    {% endfor %}
+
+    {% include 'podcast/pagination.html' %}
+
+{% endif %}
+
+<h2>{% trans 'Artwork' %}</h2>
+<p><a href="{{ show.get_image_url }}"><img src="{{ show.get_image_url }}" alt="{{ episode.title }} artwork" width="300"></a></p>
+
+{% if show.description %}
+<h2>{% trans 'Description' %}</h2>
+<p>{{ show.description }}</p>
+{% endif %}
+
+{% if show.categories %}
+<h2>{% trans 'Categories' %}</h2>
+<ul>
+    {% for key, value in show.get_categories_dict %}
+    <li>{{ key }}
+        <ul>
+            {% for sub in value %}
+            <li>{{ sub }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<h2>{% trans 'Subscribe' %}</h2>
+<p>{% if show.itunes %}<a href="{{ show.itunes }}">{% endif %}<img src="{% static 'podcast/img/itunes-badge.min.svg' %}" alt="{% trans 'Get it on iTunes' %}">{% if show.itunes %}</a>{% endif %}</p>
+<p><a href="{{ show.get_absolute_feed_url }}">{% trans 'RSS' %}</a></p>
+</div>
+</div>
+{% endblock %}
