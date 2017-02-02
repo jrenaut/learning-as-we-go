@@ -3,3 +3,4 @@ psycopg2
 django-itunespodcast
 dj-database-url
 gunicorn
+whitenoise
