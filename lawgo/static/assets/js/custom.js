@@ -6,7 +6,7 @@
 
     100% To use For Personal And Commercial Use.
     IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
-   
+
     ========================================================  */
 
 
@@ -16,10 +16,10 @@
 
         main_fun: function () {
             /*====================================
-             CUSTOM LINKS SCROLLING FUNCTION 
+             CUSTOM LINKS SCROLLING FUNCTION
             ======================================*/
 
-            $('nav a[href*=#]').click(function () {
+            $('nav a[href*=\\#]').click(function () {
                 if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
                && location.hostname == this.hostname) {
                     var $target = $(this.hash);
@@ -33,7 +33,7 @@
                     }
                 }
             });
-         
+
 
             /*====================================
                 NAV SCRIPTS
@@ -49,9 +49,9 @@
             });
 
             /*====================================
-               WRITE YOUR SCRIPTS BELOW 
+               WRITE YOUR SCRIPTS BELOW
            ======================================*/
-          
+
         },
 
         initialization: function () {
@@ -67,6 +67,3 @@
     });
 
 }(jQuery));
-
-
-
