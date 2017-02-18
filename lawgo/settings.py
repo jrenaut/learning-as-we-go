@@ -94,9 +94,14 @@ if ENVIRONMENT == 'DEV':
         }
     }
 else:
-    import dj_database_url
-    db_from_env = dj_database_url.config()
-    DATABASES = {'default': db_from_env}
+    DATABASES = {
+        'default': {
+            'ENGINE': os.environ['ENGINE'],
+            'NAME': os.environ['NAME'],
+            'USER': os.environ['USER'],
+            'HOST': os.environ['HOST'],
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
