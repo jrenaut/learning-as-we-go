@@ -1,4 +1,4 @@
-#!/home/my-username/packages/bin/python
+#!/home/lawgadmin/awgpodcast.com/env/bin/python
 
 import sys
 
