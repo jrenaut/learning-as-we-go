@@ -146,3 +146,73 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 #STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+
+if ENVIRONMENT == 'DEV':
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'formatters': {
+            'simple': {
+                'format': '%(levelname)s %(asctime)s %(name)s.%(funcName)s:%(lineno)s- %(message)s'
+            },
+        },
+        'handlers': {
+            # Log to a text file that can be rotated by logrotate
+            'logfile': {
+                'class': 'logging.handlers.WatchedFileHandler',
+                'filename': os.path.join(*[BASE_DIR, "logs", "logfile.txt"]),
+                'formatter': 'simple',
+            },
+            'console': {
+                'level': 'DEBUG',
+                'class': 'logging.StreamHandler',
+                'formatter': 'simple'
+            }
+        },
+        'loggers': {
+            'django': {
+                'handlers': ['console'],
+                'level': 'WARNING',
+                'propagate': False,
+            },
+            # Your own app - this assumes all your logger names start with
+            # "myapp."
+            'lawgo': {
+                'handlers': ['logfile'],
+                'level': 'DEBUG',  # Or maybe INFO or DEBUG
+                'propagate': False,
+            }
+        },
+    }
+else:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'formatters': {
+            'verbose': {
+                'format': ('%(asctime)s [%(process)d] [%(levelname)s] ' +
+                           'pathname=%(pathname)s lineno=%(lineno)s ' +
+                           'funcname=%(funcName)s %(message)s'),
+                'datefmt': '%Y-%m-%d %H:%M:%S'
+            },
+            'simple': {
+                'format': '%(levelname)s %(message)s'
+            }
+        },
+        'handlers': {
+            'console': {
+                'level': 'DEBUG',
+                'class': 'logging.StreamHandler',
+                'formatter': 'verbose'
+            }
+        },
+        'loggers': {
+            'django': {
+                'handlers': ['console',]
+            },
+            'lawgo': {
+                'handlers': ['console',]
+            }
+        },
+    }
