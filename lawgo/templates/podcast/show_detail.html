@@ -4,11 +4,13 @@
 
 
 {% block title %}{{ show.title }} &#183; {{ block.super }}{% endblock %}
-
+{% block addtohead %}
+<link href="{% static 'assets/css/style-ext.css' %}" rel="stylesheet" />
+{% endblock %}
 
 {% block content %}
 <div class="row color-white">
-<div class="col-md-12" >
+<div class="col-md-10 col-md-offset-1" >
 {% if not podcast_singular %}
     <ul>
         <li><a href="{% url 'podcast:show_list' %}">{% trans 'Podcasts' %}</a></li>
@@ -38,10 +40,14 @@
     {% include 'podcast/pagination.html' %}
 
 {% endif %}
-
+</div></div>
+<div class="row color-purple">
+    <div class="col-md-10 col-md-offset-1">
 <h2>{% trans 'Artwork' %}</h2>
 <p><a href="{{ show.get_image_url }}"><img src="{{ show.get_image_url }}" alt="{{ episode.title }} artwork" width="300"></a></p>
-
+</div></div>
+<div class="row color-light">
+<div class="col-md-10 col-md-offset-1" >
 {% if show.description %}
 <h2>{% trans 'Description' %}</h2>
 <p>{{ show.description }}</p>
@@ -49,14 +55,9 @@
 
 {% if show.categories %}
 <h2>{% trans 'Categories' %}</h2>
-<ul>
+<ul class="list-clean big">
     {% for key, value in show.get_categories_dict %}
-    <li>{{ key }}
-        <ul>
-            {% for sub in value %}
-            <li>{{ sub }}</li>
-            {% endfor %}
-        </ul>
+    <li class="list-inline"><span class="label label-purple">{{key}}{% for sub in value %} | {{sub}}{% endfor %}</span>
     </li>
     {% endfor %}
 </ul>

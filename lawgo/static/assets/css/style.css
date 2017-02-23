@@ -6,7 +6,7 @@
 
     100% To use For Personal And Commercial Use.
     IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
-   
+
     ========================================================  */
 
 
@@ -87,7 +87,9 @@ section {
 .color-light {
    background-color:#E9E9E9!important;
 }
-
+.color-purple {
+    background-color: #9B60DB!important;
+}
 /*=======================================
     HEADER STYLES
 ==================================================*/
@@ -117,9 +119,9 @@ nav {
     z-index:99;
 }
 .fixed {
-	position: fixed; 
-	top: 0; 
-	min-height: 50px; 
+	position: fixed;
+	top: 0;
+	min-height: 50px;
 	z-index: 99;
 }
 

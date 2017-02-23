@@ -1,0 +1,14 @@
+ul.list-clean{
+	list-style-type: none;
+	padding: 0px;
+}
+li.list-inline{
+	display: inline;
+	padding: 1em;
+}
+.big{
+	font-size: 1.5em;
+}
+.label-purple{
+	background-color: #9B60DB
+}
