@@ -1,5 +1,5 @@
-Django
-python-mysql
-django-itunespodcast
-dj-database-url
-whitenoise
+Django==1.10.5
+MySQL-python==1.2.5
+dj-database-url==0.4.2
+django-itunespodcast==0.1.4
+whitenoise==3.3.0
