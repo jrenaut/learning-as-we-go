@@ -2,6 +2,11 @@ version: '2'
 services:
     db:
         image: mysql
+        environment:
+            MYSQL_DATABASE: mysql
+            MYSQL_USER: root
+            MYSQL_PASSWORD: P@ssw0rd
+            MYSQL_ROOT_PASSWORD: P@ssw0rd
     web:
         build: .
         command: python manage.py runserver --nostatic 0.0.0.0:8000
