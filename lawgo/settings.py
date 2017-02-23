@@ -205,14 +205,19 @@ else:
                 'level': 'DEBUG',
                 'class': 'logging.StreamHandler',
                 'formatter': 'verbose'
-            }
+            },
+        'logfile': {
+            'class': 'logging.handlers.WatchedFileHandler',
+            'filename': os.path.join(*[BASE_DIR, "logs", "logfile.txt"]),
+            'formatter': 'simple',
+        }
         },
         'loggers': {
             'django': {
-                'handlers': ['console',]
+                'handlers': ['logfile',]
             },
             'lawgo': {
-                'handlers': ['console',]
+                'handlers': ['logfile',]
             }
         },
     }
