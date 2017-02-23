@@ -1,7 +1,7 @@
 version: '2'
 services:
     db:
-        image: postgres
+        image: mysql
     web:
         build: .
         command: python manage.py runserver --nostatic 0.0.0.0:8000

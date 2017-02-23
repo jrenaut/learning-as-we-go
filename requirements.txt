@@ -1,6 +1,5 @@
 Django
-psycopg2
+python-mysql
 django-itunespodcast
 dj-database-url
-gunicorn
 whitenoise
