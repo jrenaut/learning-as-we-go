@@ -12,3 +12,9 @@ li.list-inline{
 .label-purple{
 	background-color: #9B60DB
 }
+.top2{
+	padding-top:2em;
+}
+.bottom2{
+	padding-bottom:2em;
+}

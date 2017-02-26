@@ -6,10 +6,11 @@
 {% block title %}{{ show.title }} &#183; {{ block.super }}{% endblock %}
 {% block addtohead %}
 <link href="{% static 'assets/css/style-ext.css' %}" rel="stylesheet" />
+<link href="{% static 'assets/css/buttons.css' %}" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}
-<div class="row color-white">
+<div class="row color-white bottom2">
 <div class="col-md-10 col-md-offset-1" >
 {% if not podcast_singular %}
     <ul>
@@ -26,21 +27,10 @@
 {% endblocktrans %}
 
 {% if episode_list %}
-
-    <h2>{% trans 'Episodes' %}</h2>
-    {% for episode in episode_list %}
-        <h3><a href="{{ episode.get_absolute_url }}">{{ episode.title }}</a></h3>
-        <p>{% trans 'Episode'%} {{ episode.index }}</p>
-        <p><time datetime="{{ episode.pub_date|date:'c' }}" title="{{ episode.pub_date|date:'c' }}">{{ episode.pub_date|date:'j F Y' }}</time></p>
-        {% if episode.description %}
-        <p>{{ episode.description|safe }}</p>
-        {% endif %}
-    {% endfor %}
-
-    {% include 'podcast/pagination.html' %}
-
+<a class="btn btn-purple" href="{% url 'episode_list' show.pk %}">Episodes</a>
 {% endif %}
-</div></div>
+</div>
+</div>
 <div class="row color-purple">
     <div class="col-md-10 col-md-offset-1">
 <h2>{% trans 'Artwork' %}</h2>
