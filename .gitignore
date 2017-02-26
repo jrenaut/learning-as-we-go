@@ -1,4 +1,4 @@
 *.pyc
 /staticfiles
-logs/
-podcast/
+/logs/
+/podcast/

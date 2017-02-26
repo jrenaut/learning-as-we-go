@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% load i18n staticfiles %}
+
+
+{% block title %}{{show.title}}{% endblock %}
+{% block addtohead %}
+<link href="{% static 'assets/css/buttons.css' %}" rel="stylesheet" />
+<link href="{% static 'assets/css/style-ext.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<div class="row color-white top2">
+<div class="col-md-10 col-md-offset-1" >
+
+	<div class="row">
+		<div class="col-md-3">
+			<h3><a href="{{ show.get_absolute_url }}">{{show.title}}</a></h3>
+			<a href="{{ show.get_image_url }}"><img src="{{ show.get_image_url }}" alt="{{ show.title }} artwork" width="300"></a>
+			<p>{{show.description}}</p>
+		</div>
+		<div class="col-md-7">
+	<table class="table">
+		<thead>
+		<tr><th>Title</th><th>Date</th><th></th></tr>
+	</thead>
+	<tbody>
+{% for e in eps %}
+<tr>
+	<td>{{e.title}}</td>
+	<td>{{e.pub_date}}</td>
+	<td>
+		<div class="btn-group" role="group" aria-label="Listening options">
+		<a class="btn btn-sm btn-success" href="#"><i class="fa fa-volume-up" aria-hidden="true"></i> Listen</a>
+		<a class="btn btn-sm btn-success" href="{{ e.get_absolute_download_url }}"><i class="fa fa-cloud-download" aria-hidden="true"></i> Download</a>
+		<a class="btn btn-sm btn-success" href="{{ e.get_absolute_url }}"><i class="fa fa-caret-square-o-down" aria-hidden="true"></i> Detail</a>
+		</div>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div></div>
+</div>
+</div>
+{% endblock %}
