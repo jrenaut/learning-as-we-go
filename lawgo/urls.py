@@ -14,8 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.conf import settings
 from django.contrib import admin
 from django.views.generic import TemplateView
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls.static import static
 from .views import *
 
 urlpatterns = [
@@ -23,4 +26,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^podcast/', include('podcast.urls')),
     url(r'^podcast/(?P<show_id>[0-9]+)/episode/list', episode_list, name="episode_list"),
+    url(r'^dl', dl, name='dl')
 ]
+
+if getattr(settings, 'DEBUG', False):
+    urlpatterns += staticfiles_urlpatterns() + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

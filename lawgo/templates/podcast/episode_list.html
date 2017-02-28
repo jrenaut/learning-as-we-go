@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load i18n staticfiles %}
+{% load static %}
 
 
 {% block title %}{{show.title}}{% endblock %}
@@ -31,8 +32,8 @@
 	<td>{{e.pub_date}}</td>
 	<td>
 		<div class="btn-group" role="group" aria-label="Listening options">
-		<a class="btn btn-sm btn-success" href="#"><i class="fa fa-volume-up" aria-hidden="true"></i> Listen</a>
-		<a class="btn btn-sm btn-success" href="{{ e.get_absolute_download_url }}"><i class="fa fa-cloud-download" aria-hidden="true"></i> Download</a>
+		<!-- <a class="btn btn-sm btn-success" href="#"><i class="fa fa-volume-up" aria-hidden="true"></i> Listen</a>-->
+		<a class="btn btn-sm btn-success" href="{{ e.enclosure.file.url }}" download><i class="fa fa-cloud-download" aria-hidden="true"></i> Download</a>
 		<a class="btn btn-sm btn-success" href="{{ e.get_absolute_url }}"><i class="fa fa-caret-square-o-down" aria-hidden="true"></i> Detail</a>
 		</div>
 </td>

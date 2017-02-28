@@ -7,7 +7,7 @@
 {% block addtohead %}
 <link href="{% static 'assets/css/buttons.css' %}" rel="stylesheet" />
 <link href="{% static 'assets/css/style-ext.css' %}" rel="stylesheet" />
-
+<link href="{% static 'assets/css/bootstrap-player.css' %}" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}
@@ -25,14 +25,15 @@
 <p><time datetime="{{ episode.pub_date|date:'c' }}" title="{{ episode.pub_date|date:'c' }}">{{ episode.pub_date|date:'j F Y' }}</time></p>
 
 {% if episode.enclosure %}
+<div class="row">
+    <div class="col-md-5">
 {% with enclosure=episode.enclosure %}
 
     {# Audio #}
     {% if enclosure.type == 'audio/mpeg' or enclosure.type == 'audio/x-m4a' %}
-    <audio src="{{ enclosure.file.url }}" controls>
-        <!-- <p><a class="btn btn-purple" href="{{ enclosure.file.url }}"><i aria-hidden="true" class="fa fa-cloud-download fa-lg"></i> {% trans 'Download the audio' %}</a></p> -->
+    <audio controls>
+        <source src="{{ enclosure.file.url }}" type="audio/mpeg" />
     </audio>
-    <p>{{ enclosure.get_duration }}</p>
 
     {# Video #}
     {% elif enclosure.type == 'video/mp4' or enclosure.type == 'video/x-m4v' or enclosure.type == 'video/quicktime' %}
@@ -43,11 +44,12 @@
     <p>{{ enclosure.get_duration }}</p>
     {% endif %}
 
-    <a class="btn btn-purple" href="{{ episode.get_absolute_download_url }}">
+    <a class="btn btn-purple" href="{{ enclosure.file.url }}" download>
 		<i aria-hidden="true" class="fa fa-cloud-download fa-lg"></i> {% trans 'Download the' %} {{ enclosure.get_megabytes }} {% trans 'MB' %} {{ enclosure.get_type_display }}
 	</a>
 
 {% endwith %}
+</div></div>
 {% endif %}
 
 <h2>{% trans 'Artwork' %}</h2>
@@ -75,4 +77,7 @@
 {% endif %}
 </div>
 </div>
+{% endblock %}
+{% block afterjquery %}
+<script src="{% static 'assets/js/bootstrap-player.js' %}"></script>
 {% endblock %}
