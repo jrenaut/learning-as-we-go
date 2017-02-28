@@ -26,9 +26,11 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^podcast/', include('podcast.urls')),
     url(r'^podcast/(?P<show_id>[0-9]+)/episode/list', episode_list, name="episode_list"),
-    url(r'^dl', dl, name='dl')
+    #url(r'^dl', dl, name='dl')
 ]
 
-if getattr(settings, 'DEBUG', False):
-    urlpatterns += staticfiles_urlpatterns() + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += staticfiles_urlpatterns() + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# if getattr(settings, 'DEBUG', False):
+#     urlpatterns += staticfiles_urlpatterns() + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
