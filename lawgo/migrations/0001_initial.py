@@ -10,10 +10,6 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-        ('podcast', '0004_auto_20170303_2259'),
-    ]
-
     operations = [
         migrations.CreateModel(
             name='Bio',
