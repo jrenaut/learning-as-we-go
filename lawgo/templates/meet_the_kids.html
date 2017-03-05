@@ -4,13 +4,21 @@
 
 
 {% block title %}Meet the kids{% endblock %}
+{% block addtohead %}
+<style>
+.media{
+	background-color: white;
+	padding: 1em;
+}
+</style>
+{% endblock %}
 {% block content %}
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 		<h2>Meet the kids!</h2>
 {% for b in bios %}
 <div class="media">
-  <div class="media-left">
+  <div class="media-left media-middle">
     <a href="{% url 'show_bio' b.id %}">
       <img height="100" width="100" class="media-object img-rounded" src="{{b.user.photo.url}}" alt="{{b.user.name}}">
     </a>
