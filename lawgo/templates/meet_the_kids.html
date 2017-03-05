@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load i18n staticfiles %}
+
+
+{% block title %}Meet the kids{% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<h2>Meet the kids!</h2>
+{% for b in bios %}
+<div class="media">
+  <div class="media-left">
+    <a href="{% url 'show_bio' b.id %}">
+      <img height="100" width="100" class="media-object img-rounded" src="{{b.user.photo.url}}" alt="{{b.user.name}}">
+    </a>
+  </div>
+  <div class="media-body">
+    <a href="{% url 'show_bio' b.id %}"><h4 class="media-heading">{{b.user.name}}</h4></a>
+    {{b.user.bio}}
+  </div>
+</div>
+
+{% endfor %}
+</div>
+</div>
+{% endblock %}

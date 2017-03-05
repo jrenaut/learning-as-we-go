@@ -1,0 +1,9 @@
+.bio-panel{
+	background-color: #cc0099;
+	border: 1em solid #4d0039;
+	padding: 1.5em;
+}
+.bio-person-name{
+	color: pink;
+	font-size: 2em;
+}
