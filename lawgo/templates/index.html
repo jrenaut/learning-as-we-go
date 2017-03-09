@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
-
+{% load staticfiles %}
+{% block addtohead %}
+<link href="{% static 'assets/css/buttons.css' %}" rel="stylesheet" />
+{% endblock %}
 		{% block content %}
         <div class="row text-center">
       <div class="col-md-12" >
@@ -78,8 +81,11 @@
                     <h2 style="padding-top:50px;">Listen</h2>
                     <h4>
                         <strong>
-                      <a class="btn btn-primary" href="{% url 'podcast:show_detail' %}">Episodes</a>
+                      <a class="btn btn-purple" href="{% url 'podcast:show_detail' %}">Episodes</a>
 					<a class="btn btn-primary" href="{% url 'podcast:show_feed' %}"><i class="fa fa-feed"></i> Feed</a>
+					<a class="btn btn-primary" href='https://playmusic.app.goo.gl/?ibi=com.google.PlayMusic&amp;isi=691797987&amp;ius=googleplaymusic&amp;link=https://play.google.com/music/m/Ikkhqoxzoxzbj7aiw275wwru3uu?t%3DLearning_as_We_Grow%26pcampaignid%3DMKT-na-all-co-pr-mu-pod-16' rel='nofollow'>Google Play</a>
+					<a class="btn btn-primary" href="https://itunes.apple.com/us/podcast/learning-as-we-grow/id1212642454">iTunes</a>
+					<a class="btn btn-primary" href="http://tunein.com/radio/Learning-as-we-Grow-p966114/">TuneIn</a>
                             </strong>
                     </h4>
                 </div>
