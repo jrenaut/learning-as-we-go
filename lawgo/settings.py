@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'lawgo',
     'podcast',
+    'analytical',
 ]
 
 MIDDLEWARE = [
@@ -82,7 +83,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'lawgo.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 if ENVIRONMENT == 'DEV':
@@ -105,6 +105,7 @@ else:
             'HOST': os.environ['HOST'],
         }
     }
+    YANDEX_METRICA_COUNTER_ID = '43511409'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators

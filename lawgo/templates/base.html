@@ -1,9 +1,11 @@
 {% load static %}
+{% load analytical %}
 <!DOCTYPE html>
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{ LANGUAGE_CODE }}">
   <head>
+      {% analytical_head_top %}
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -31,8 +33,10 @@
     <![endif]-->
     <!-- theme from http://www.free-css.com/free-css-templates/page203/image-less, somewhat modified -->
     {% block addtohead %}{% endblock %}
+    {% analytical_head_bottom %}
   </head>
   <body>
+       {% analytical_body_top %}
         {% block content %}
 	    {% endblock %}
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -41,5 +45,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   	<script src="{% static 'assets/js/custom.js' %}"></script>
     {% block afterjquery %}{% endblock %}
+    {% analytical_body_bottom %}
 </body>
 </html>
