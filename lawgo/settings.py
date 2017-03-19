@@ -106,6 +106,7 @@ else:
         }
     }
     YANDEX_METRICA_COUNTER_ID = '43511409'
+    WOOPRA_DOMAIN = 'awgpodcast.com'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
