@@ -32,7 +32,15 @@
 </div>
 </div>
 <!-- <p>{% trans 'Episode'%} {{ episode.index }}</p> -->
-
+<div class="row color-white">
+    <div class="col-md-11 col-md-offset-1">
+        <ul class="list-inline"><li class="">Hosts:</li>
+        {% for h in episode.hosts.all %}
+        <li class="">{{h}}</li>
+        {% endfor %}
+    </ul>
+    </div>
+</div>
 
 
 {% if episode.enclosure %}
