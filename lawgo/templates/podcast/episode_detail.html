@@ -12,21 +12,33 @@
 
 {% block content %}
 <div class="row color-white top2">
-<div class="col-md-10 col-md-offset-1" >
+<div class="col-md-7 col-md-offset-1" >
     {% if not podcast_singular %}
     <a href="{% url 'podcast:show_list' %}">{% trans 'Podcasts' %}</a>
     {% endif %}
 <a class="btn btn-purple" href="{{ episode.show.get_absolute_url }}"><i aria-hidden="true" class="fa fa-home fa-lg"></i> {{ episode.show.title }}</a>
-
+</div>
+</div>
+<div class="row color-white top2">
+<div class="col-md-7 col-md-offset-1" >
 <h1>{{ episode.title }}</h1>
-
-<p>{% trans 'Episode'%} {{ episode.index }}</p>
-
 <p><time datetime="{{ episode.pub_date|date:'c' }}" title="{{ episode.pub_date|date:'c' }}">{{ episode.pub_date|date:'j F Y' }}</time></p>
+{% if episode.description %}
+<p class="lead">{{ episode.description|safe }}</p>
+{% endif %}
+</div>
+<div class="col-md-4">
+    <p><a href="{{ episode.show.get_image_url }}"><img class="img-responsive" src="{{ episode.show.get_image_url }}" alt="{{ episode.title }} artwork" width="300"></a></p>
+</div>
+</div>
+<!-- <p>{% trans 'Episode'%} {{ episode.index }}</p> -->
+
+
 
 {% if episode.enclosure %}
-<div class="row">
-    <div class="col-md-5">
+<div class="row color-white">
+<div class="col-md-7 col-md-offset-1" >
+        <h3>Listen here!</h3>
 {% with enclosure=episode.enclosure %}
 
     {# Audio #}
@@ -52,14 +64,11 @@
 </div></div>
 {% endif %}
 
-<h2>{% trans 'Artwork' %}</h2>
-<p><a href="{{ episode.show.get_image_url }}"><img src="{{ episode.show.get_image_url }}" alt="{{ episode.title }} artwork" width="300"></a></p>
 
-{% if episode.description %}
-<h2>{% trans 'Description' %}</h2>
-<p>{{ episode.description|safe }}</p>
-{% endif %}
 
+
+<div class="row color-white">
+    <div class="col-md-11 col-md-offset-1">
 <h2>{% trans 'Subscribe' %}</h2>
 
 <p>{% if episode.show.itunes %}<a href="{{ episode.show.itunes }}">{% endif %}<img src="{% static 'podcast/img/itunes-badge.min.svg' %}" alt="{% trans 'Get it on iTunes' %}">{% if episode.show.itunes %}</a>{% endif %}</p>
