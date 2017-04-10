@@ -12,37 +12,45 @@
 {% block content %}
 <div class="row color-white bottom2">
 <div class="col-md-10 col-md-offset-1" >
-{% if not podcast_singular %}
+<!-- {% if not podcast_singular %}
     <ul>
         <li><a href="{% url 'podcast:show_list' %}">{% trans 'Podcasts' %}</a></li>
     </ul>
-{% endif %}
+{% endif %} -->
 
 <h1>{{ show.title }}</h1>
 
-{% blocktrans count episode_count=page_obj.paginator.count %}
+<!-- {% blocktrans count episode_count=page_obj.paginator.count %}
 <p>{{ episode_count }} episode</p>
 {% plural %}
 <p>{{ episode_count }} episodes</p>
-{% endblocktrans %}
+{% endblocktrans %} -->
 
-{% if episode_list %}
+<!-- {% if episode_list %}
 <a class="btn btn-purple" href="{% url 'episode_list' show.pk %}">Episodes</a>
-{% endif %}
+{% endif %} -->
 </div>
 </div>
-<div class="row color-purple">
-    <div class="col-md-10 col-md-offset-1">
-<h2>{% trans 'Artwork' %}</h2>
-<p><a href="{{ show.get_image_url }}"><img src="{{ show.get_image_url }}" alt="{{ episode.title }} artwork" width="300"></a></p>
-</div></div>
+<div class="row color-purple top2">
+    <div class="col-md-4 col-md-offset-1">
+        <p><a href="{{ show.get_image_url }}"><img src="{{ show.get_image_url }}" alt="{{ episode.title }} artwork" width="300"></a></p>
+    </div>
+    <div class="col-md-6">
+        <!-- <p>{{ show.description }}</p> -->
+        <div class="row">
+            <div class="col-md-12">
+        <p class="lead">{{show.description}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <a class="btn btn-default pull-right" href="{% url 'episode_list' show.pk %}">Episodes</a>
+    </div>
+</div>
+    </div>
+</div>
 <div class="row color-light">
 <div class="col-md-10 col-md-offset-1" >
-{% if show.description %}
-<h2>{% trans 'Description' %}</h2>
-<p>{{ show.description }}</p>
-{% endif %}
-
 {% if show.categories %}
 <h2>{% trans 'Categories' %}</h2>
 <ul class="list-clean big">
