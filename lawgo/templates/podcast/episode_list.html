@@ -18,7 +18,7 @@
 		<div class="col-md-3">
 			<h3><a href="{{ show.get_absolute_url }}">{{show.title}}</a></h3>
 			<a href="{{ show.get_image_url }}"><img src="{{ show.get_image_url }}" alt="{{ show.title }} artwork" width="300"></a>
-			<p>{{show.description}}</p>
+			<p>{{show.description|safe}}</p>
 			<ul class="list-clean big">
 			    <li class="">
 			        {% if show.itunes %}
