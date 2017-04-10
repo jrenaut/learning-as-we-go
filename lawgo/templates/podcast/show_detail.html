@@ -31,7 +31,7 @@
 {% endif %} -->
 </div>
 </div>
-<div class="row color-purple top2">
+<div class="row color-purple top2 bottom2">
     <div class="col-md-4 col-md-offset-1">
         <p><a href="{{ show.get_image_url }}"><img src="{{ show.get_image_url }}" alt="{{ episode.title }} artwork" width="300"></a></p>
     </div>
@@ -39,7 +39,7 @@
         <!-- <p>{{ show.description }}</p> -->
         <div class="row">
             <div class="col-md-12">
-        <p class="lead">{{show.description}}</p>
+    {{show.description|safe}}
     </div>
 </div>
 <div class="row">
