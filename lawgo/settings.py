@@ -105,7 +105,6 @@ else:
             'HOST': os.environ['HOST'],
         }
     }
-    YANDEX_METRICA_COUNTER_ID = '43511409'
     WOOPRA_DOMAIN = 'awgpodcast.com'
 
 # Password validation
