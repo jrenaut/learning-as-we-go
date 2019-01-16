@@ -12,23 +12,8 @@
 {% block content %}
 <div class="row color-white bottom2">
 <div class="col-md-10 col-md-offset-1" >
-<!-- {% if not podcast_singular %}
-    <ul>
-        <li><a href="{% url 'podcast:show_list' %}">{% trans 'Podcasts' %}</a></li>
-    </ul>
-{% endif %} -->
 
 <h1>{{ show.title }}</h1>
-
-<!-- {% blocktrans count episode_count=page_obj.paginator.count %}
-<p>{{ episode_count }} episode</p>
-{% plural %}
-<p>{{ episode_count }} episodes</p>
-{% endblocktrans %} -->
-
-<!-- {% if episode_list %}
-<a class="btn btn-purple" href="{% url 'episode_list' show.pk %}">Episodes</a>
-{% endif %} -->
 </div>
 </div>
 <div class="row color-purple top2 bottom2">
