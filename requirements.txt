@@ -1,4 +1,4 @@
-Django==1.11.18
+Django==1.11.20
 MySQL-python==1.2.5
 dj-database-url==0.5.0
 django-itunespodcast==0.1.9
