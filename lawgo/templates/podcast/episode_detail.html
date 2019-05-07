@@ -13,9 +13,6 @@
 {% block content %}
 <div class="row color-white top2">
 <div class="col-md-7 col-md-offset-1" >
-    {% if not podcast_singular %}
-    <a href="{% url 'podcast:show_list' %}">{% trans 'Podcasts' %}</a>
-    {% endif %}
 <a class="btn btn-purple" href="{{ episode.show.get_absolute_url }}"><i aria-hidden="true" class="fa fa-home fa-lg"></i> {{ episode.show.title }}</a>
 </div>
 </div>
